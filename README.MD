@@ -9,3 +9,5 @@ day03： 直接插入排序 com.nanyin.straightInsertSrot包下的straightInsert
 day04: 快速排序 com.nanyin.quickSort包下
 
 day05: 希尔排序 com.nanyin.shellSort包下
+
+test
