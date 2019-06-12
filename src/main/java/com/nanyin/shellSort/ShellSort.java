@@ -34,6 +34,6 @@ public class ShellSort {
         int[] sortArray = new int[]{1, 3, 2, 5, 4, 9, 7, 6, 8};
         ShellSort shellSort = new ShellSort();
         shellSort.shellSort(sortArray);
-        System.out.println(Arrays.asList(shellSort).toString());
+        System.out.println(Arrays.toString(sortArray));
     }
 }
