@@ -11,4 +11,13 @@ public class common {
         int newMid = (int)Math.floor(midValue);
         System.out.println(newMid);
     }
+    @Test
+    public void test2(){
+       int a = 0;
+       int i = 1;
+        System.out.println(i++);
+        System.out.println(i);
+        System.out.println(++i);
+        System.out.println();
+    }
 }

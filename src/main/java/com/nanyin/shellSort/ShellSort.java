@@ -12,7 +12,6 @@ public class ShellSort {
         int increment, i, j;
         for (increment = array.length / 2; increment > 0; increment /= 2) {
 //            根据增量的值构建子序列
-            System.out.println(increment);
             for (i = increment; i < array.length; i++) {
                 int temp = array[i];
 //                在这里跳一跳 分小组 小组内进行直接插入排序

@@ -23,7 +23,7 @@ public class quickSort {
         while(i<j){
 //            时刻判断i是否小于j 大于j就不对了
             while(i<j && array[j]>standNumber){
-//                右边j-- 一直走，知道他发现它能够小于standNumber的时候停止
+//                右边如果大于基准值则j-- 一直走，知道他发现它小于standNumber的时候停止
                 j--;
             }
             if(i<j){
