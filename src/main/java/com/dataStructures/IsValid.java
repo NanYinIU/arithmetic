@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ *
+ * 20. 有效的括号
+ *
  * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
  * <p>
  * 有效字符串需满足：
@@ -20,6 +23,11 @@ import java.util.Map;
  */
 public class IsValid {
 
+    /**
+     * 使用类似进栈出栈的做法，如果最后栈内为空，则说明对应
+     * @param s
+     * @return
+     */
     public boolean isValid(String s) {
         Map<Character, Character> map = new HashMap<>();
         map.put('(', ')');
@@ -39,6 +47,8 @@ public class IsValid {
                 char[] result = new char[arr.length];
                 int j = 0;
                 for (int i = 0; i < arr.length; i++) {
+                    // 先放一个元素进去，第二个元素开始比较前一个元素，如果对应，则j--，否则j++
+                    // 如果最后结果j>0 说明元素没有完全对应上，则返回false
                     if (j == 0) {
                         result[j] = arr[i];
                         j++;
