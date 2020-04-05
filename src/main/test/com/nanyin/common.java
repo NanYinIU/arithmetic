@@ -1,4 +1,4 @@
-package com.nanyin;
+package com.basic;
 
 import org.junit.Test;
 
