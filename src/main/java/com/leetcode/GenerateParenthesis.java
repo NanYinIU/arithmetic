@@ -51,25 +51,43 @@ public class GenerateParenthesis {
 //        return list;
 //    }
 
-    public List<String> generateParenthesis(int n) {
-        // 动态规划
-        // 在添加括号内容时，只会添加在括号的中间和外面，也就是 -> （ a ）b
-        // 这里的a和b 为 前面算出的结果 但是需要满足条件 a + b + 1 = n；
-        // 可以理解为 a个() + b个() + () = n个();
-        List<String> list = new LinkedList<>();
-        if(n ==0 ){
-            list.add("");
-            return list;
+//    public List<String> generateParenthesis(int n) {
+//        // 动态规划
+//        //
+//        List<String> result = new LinkedList<>();
+//        if(n == 0){
+//            result.add("");
+//        }
+//        for (int i = 0; i < n; i++) {
+//            for (String a : generateParenthesis(i)) {
+//                for (String b : generateParenthesis(n - i - 1)) {
+//                    result.add("("+a+")"+b);
+//                }
+//            }
+//        }
+//        return result;
+//    }
+    private List<String> result = new LinkedList<>();
+    public List<String> generateParenthesis(int n){
+        if(n == 0){
+            result.add("");
         }
-        for (int i = 0; i < n; i++) {
-            for (String a1 : generateParenthesis(i)) {
-                for (String a2 : generateParenthesis(n - 1 - i)) {
-                    list.add("("+a1+")"+a2);
-                }
-            }
-        }
-        return list;
+        dfs("",0,0,n);
+        return result;
     }
+
+    private void dfs(String s,int left,int right,int n){
+        if(s.length() > 2*n){
+            result.add(s);
+        }
+        if(left < n){
+            dfs("("+s,left+1,right,n);
+        }
+        if(right > left){
+            dfs(s+")",left,right+1,n);
+        }
+    }
+
     public static void main(String[] args) {
         GenerateParenthesis generateParenthesis = new GenerateParenthesis();
         List<String> strings = generateParenthesis.generateParenthesis(2);
