@@ -43,4 +43,6 @@ class PrefixSum {
 
 这个技巧在生活中运用也挺广泛的，比方说，你们班上有若干同学，每个同学有⼀个期末考试的成绩（满 100 分），那么请你实现⼀个 API，输⼊任意⼀个分数段，返回有多少同学的成绩在这个分数段内。
 
+#### 二维数组中的前缀和
 
+[二维数组中的前缀和](src/main/java/com/leetcode/v2/No304_Range_Sum_Query_2D_Immutable/NumMatrix.java)
