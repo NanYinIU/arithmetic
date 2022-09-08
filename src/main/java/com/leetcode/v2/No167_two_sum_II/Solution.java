@@ -1,5 +1,8 @@
 package com.leetcode.v2.No167_two_sum_II;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 给你一个下标从 1 开始的整数数组 numbers ，该数组已按 非递减顺序排列  ，请你从数组中找出满足相加之和等于目标数 target
  * 的两个数。如果设这两个数分别是 numbers[index1] 和 numbers[index2] ，则 1 <= index1 < index2 <=
@@ -28,9 +31,13 @@ package com.leetcode.v2.No167_two_sum_II;
  */
 
 class Solution {
+
     public int[] twoSum(int[] numbers, int target) {
+
         int right = numbers.length - 1;
         int left = 0;
+        // List<String> s = new ArrayList<>();
+
         while (left < right) {
             int ts = numbers[left] + numbers[right];
             if (ts == target) {
