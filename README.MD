@@ -1,14 +1,14 @@
 # 基本排序算法
 
-day01：冒泡排序,解释和程序再com.nanyin.bubbleSort包下的Bubble类中
+day01：冒泡排序，解释和程序再 com.nanyin.bubbleSort 包下的 Bubble 类中
 
-day02: 选择插入排序在 com.basic.selectionSort包下的selection类中
+day02: 选择插入排序在 com.basic.selectionSort 包下的 selection 类中
 
-day03： 直接插入排序 com.basic.straightInsertSrot包下的straightInsert类
+day03： 直接插入排序 com.basic.straightInsertSrot 包下的 straightInsert 类
 
-day04: 快速排序 com.basic.quickSort包下
+day04: 快速排序 com.basic.quickSort 包下
 
-day05: 希尔排序 com.basic.shellSort包下
+day05: 希尔排序 com.basic.shellSort 包下
 
 # LeetCode
 
@@ -46,3 +46,5 @@ class PrefixSum {
 #### 二维数组中的前缀和
 
 [二维数组中的前缀和](src/main/java/com/leetcode/v2/No304_Range_Sum_Query_2D_Immutable/NumMatrix.java)
+
+#### [[指针]]
