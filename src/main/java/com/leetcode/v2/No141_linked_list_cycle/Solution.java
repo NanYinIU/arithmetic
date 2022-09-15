@@ -29,7 +29,7 @@ public class Solution {
      *
      * 1. 第一种是开辟额外空间，存储路径上的元素，如果存在重复，则返回true
      *
-     * 2. 第二种是快慢指针，快指针 +2 慢指针+1，如果 快指针 == 慢指针 返回 true
+     * 2. 第二种是快慢指针，快指针 +2 慢指针+1，如果 快指针 == 慢指针 返回 true, 直到快指针走到尽头
      */
     public boolean hasCycle(ListNode head) {
         if (head == null || head.next == null) {
@@ -38,9 +38,11 @@ public class Solution {
         ListNode fast = head.next;
         ListNode slow = head;
         while (fast != null) {
+            // 如果快指针走到了头
             if (fast == null || fast.next == null) {
                 return false;
             }
+            // 如果两个指针相遇
             if (fast == slow) {
                 return true;
             }
