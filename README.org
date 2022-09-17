@@ -1,0 +1,266 @@
+#+title: Readme
+* 跟着 labuladong 学习算法
+
+常用数据结构相关的算法，主要是数组、链表相关的算法，比如 双指针算法， 滑动窗口算法 等，不需要什么前置知识，技巧虽然精妙，但你理解起来也不会很困难。但稍微进阶一些的算法技巧，主要是递归相关的算法，比如 回溯算法， 动态规划，或者高级数据结构相关算法 Dijkstra 算法， 字典树算法 等，你不要上来就学它们，否则很容易劝退。这些递归算法需要二叉树算法作为铺垫，你应该先学习我的二叉树专题文章，再去学习这些高级算法，就能融会贯通了。
+
+** 框架思维
+从 *整体到细节，自顶向下* ，从抽象到具体的框架思维是通用的，不只是学习数据结构和算法，学习其他任何知识都是高效的
+*** 数据结构的存储方式
+数据结构的存储方式只有两种： *数组* （顺序存储）和 *链表* （链式存储）。
+
+** 刷题指南
+*** 建议的刷题建议
+1. 先学习像数组、链表这种基本数据结构的常用算法
+2. 学会基础算法之后，应该先刷二叉树，先刷二叉树，先刷二叉树，最容易培养框架思维的，而且大部分算法技巧，本质上都是树的遍历问题
+*** 试着从框架上看问题，而不要纠结于细节问题
+
+** 计算机思维
+算法的本质就是「穷举」；能够站在计算机的视角，抽象、化简实际问题，然后用编程的方式去解决问题
+
+1. 如何穷举？即无遗漏地穷举所有可能解。
+2. 如何聪明地穷举？即避免所有冗余的计算，消耗尽可能少的资源求出答案。
+3. 在做题的时候要思考，联想，进而培养举⼀反三的能力
+
+数组链表代表着计算机最基本的两种存储形式：顺序存储和链式存储，所以他俩可以算是最基本的数据结构；
+
+** 数组
+
+*** 前缀和
+前缀和技巧适用于 *快速、频繁地计算⼀个索引区间内的元素之和* 。前缀和的核心内容就是新建一个数组，数组内的元素 preNum[i] 为原数组 [0...i] 的和；
+
+#+begin_src java
+class PrefixSum {
+    // 前缀和数组
+    private int[] prefix;
+    /* 输入一个数组，构造前缀和 */
+    public PrefixSum(int[] nums) {
+        prefix = new int[nums.length + 1];
+        // 计算 nums 的累加和
+        for (int i = 1; i < prefix.length; i++) {
+            prefix[i] = prefix[i - 1] + nums[i - 1];
+        }
+    }
+    /* 查询闭区间 [i, j] 的累加和 */
+    public int query(int i, int j) {
+        return prefix[j + 1] - prefix[i];
+    }
+}
+#+end_src
+
+**** 一维数组中的前缀和
+
+[[id:f2d7b7b9-1372-477e-ae8c-8ba633da8b73][303. Range Sum Query - Immutable Org Doc]] -> [[./src/main/java/com/leetcode/v2/No303_Range_Sum_Query_Immutable/NumArray.java][Solution]]
+
+这个技巧在生活中运用也挺广泛的，比方说，你们班上有若干同学，每个同学有⼀个期末考试的成绩（满 100 分），那么请你实现⼀个 API，输⼊任意⼀个分数段，返回有多少同学的成绩在这个分数段内。
+
+**** 二维数组中的前缀和
+
+[[id:3f74d40e-86e9-4112-950c-0554301119bf][304. Range Sum Query 2D - Immutable]]
+
+*** 差分数组
+- 差分数组和前缀和比较类似，不一样的是，差分数组适合频繁对原始数组的某个区间的元素进行增减。
+- 构造类似前缀和的 prefix 数组，对原始 nums 数组构造一个 diff 数组，diff 数组的内容就是 nums 数组前后元素的差值， diff[i] = nums[i] - nums[i-1];
+
+ 现在我们把差分数组抽象成⼀个类，包含 increment 方法和 result 方法：
+
+#+begin_src java
+class Difference{
+    private int[] diff;
+
+    // 构造函数，构造 diff 数组
+    public Difference(int[] nums){
+        if(nums.length <=0){
+            return;
+        }
+        diff = new int[nums.length+1];
+        diff[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+           diff[i] = nums[i] - nums[i-1];
+        }
+    }
+
+    // 修改 diff 数组
+    public void increment(int start,int end,int incr){
+        // 更新 diff 数组， diff[start...end] + incr diff[end...] - incr
+        for (int i = start; i <  end; i++) {
+            diff[i] += incr;
+        }
+        for (int j = end; j < diff.length; j++) {
+            diff[j] -= incr;
+        }
+    }
+
+    // 根据 diff 和原始的 nums 数组，计算结果
+    public int[] result(){
+        int[] res = new int[diff.length];
+        res[0] = diff[0];
+        for (int i = 1; i < diff.length; i++) {
+            res[i] = diff[i] + res[i-1];
+        }
+        return res;
+    }
+
+}
+
+#+end_src
+
+[[id:62d79f1d-66bd-4c3a-a9d4-0223e26efd11][1109. Corporate Flight Bookings]]
+
+还有一个很类似的题目：
+
+[[id:fba03ce1-c4b8-4f7b-b67b-8758d53ad8b7][1094. Car Pooling]]
+
+*** 双指针
+**** 1. 删除数组中的重复项
+[[id:29d23cb2-69ea-4f63-a721-7c15fb0b827c][26. Remove Duplicates from Sorted Array]]
+**** 2. 移除元素
+[[id:4d9cf4a9-2e57-48e8-9667-c142274de4f5][27. Remove Element]]
+**** 3. 两数之和
+[[id:7e901b73-449f-4f89-b877-2badd0da816c][167. Two Sum II - Input Array Is Sorted]]
+**** 4. 反转数组
+[[id:aa7f8b11-6bd8-4608-8537-9f9bf9e00c0b][344. Reverse String]]
+**** 5. 最长回访子串
+使用双指针由内向外移动，相当于暴力解决，可以使用动态规化的方式，这个需要等到动态规化的时候再说
+[[id:0060dc9b-949e-4d76-989d-a4b4416a733c][5. 最长回文子串]]
+
+** 链表
+
+*** 双指针 - 七道链表题
+
+对于单链表的题目，双指针的应用还是非常广泛的。。
+**** 1. 合并两个有序链表
+
+基本规律：
+1. 首先使用到了 *虚拟头节点*  的技巧，也就是里面的 dump 节点
+2. 其次，使用到了 p 节点，作为 dump 列表上的一个可移到的头节点，就像拉链的拉头；
+3. 最后，使用两个分别作为 p1,p2 两个节点的可移动的节点，就像拉链两边的锯齿；
+
+[[id:ad6ca029-3243-4e79-ad08-28ff688a574c][21. Merge Two Sorted Lists]]
+
+**** 2. 合并 K 个有序链表
+
+1. 这里使用了优先级队列的数据结构，将每个链表的头结点都加到最小堆中，就可以每次获得 k 个节点中的最小结点；
+2. 还有一个方法就是使用二分和递归的方式，两两进行组合，就是跟上面的合并两个有序链表一个思路了，具体实现可以看下面的程序；
+
+[[id:ad6ca029-3243-4e79-ad08-28ff688a574c][23. Merge k Sorted Lists]]
+
+**** 3. 环形链表
+怎么判断是否是环形链表？快慢指针，如果相遇，则是环形链表
+[[id:33a27284-7e11-4dc9-8d9b-27667ebd00bc][141. Linked List Cycle]]
+判断环的起点
+[[id:9b1c3210-50a4-4c47-8823-508bfba3eb27][142. Linked List Cycle II]]
+**** 4. 单链表的倒数第 K 个节点
+- 怎么获得倒数第 K 个节点？如果想获得第 K 个节点，可以 for 循环直接遍历；
+- 求倒数 K 个节点 -> 那就是求 N - K 位置的节点
+- 怎么知道 N 是多少呢？需要循环一次才能知道，那怎么循环一次就能知道 N-K 呢？
+- 设置快慢指针，快指针到 K 的时候，慢指针从 Head 节点出发，两个指针同速前进，快指针到末尾，慢指针的位置就是 N-K 了
+#+begin_src java
+ListNode findFromEnd(ListNode head, int k) {
+  ListNode fast = head;
+  ListNode slow = head;
+  int point = 0;
+  while (fast != null) {
+    point += 1;
+    fast = fast.next;
+    if (point >= k) {
+      slow = solw.next;
+    }
+  }
+  return solw;
+}
+#+end_src
+
+[[id:ad6ca029-3243-4e79-ad08-28ff688a574c][19. Remove Nth Node From End of List]]
+**** 5. 链表中的中间节点
+通过快慢指针来避免第一次获取长度 N，第二次循环到 N/2 的问题，可以一次循环解决问题
+[[id:529cffe3-d25e-4499-ac60-a57d3368bf98][876. Middle of the Linked List]]
+**** 6. 相交链表
+因为两个链表的长度不一致，导致使用双指针的时候不知道两个指针什么时候出发合适；
+HeadA 路程是 a -> c -> b 总数是 A
+HeadB 路程是 x -> c -> b 总数是 B
+可以让 point1 先从 HeadA 出发，走完 HeadA 之后，从 HeadB 出发，此时已经走了路程 A
+让 pint2 从 HeadB 出发，走完 HeadB 之后，从 HeadA 出发，此时已经走了路程 B
+Point1 - Point2 = a - x;
+因此：
+Point1 + x = Point2 + a
+从而可以看到，两个再分别通过均速走就可以在交点相遇
+
+[[id:eb8dc97d-3f88-471e-b706-176801956830][160. Intersection of Two Linked Lists]]
+****
+
+** 滑动窗口算法
+
+*** 滑动窗口算法框架
+
+#+begin_src python
+/* 滑动窗口算法框架 */
+void slidingWindow(string s, string t) {
+    unordered_map<char, int> need, window;
+    # 将字符map 到数组中，数组的含义就是字符出现的次数
+    for (char c : t) need[c]++;
+
+    int left = 0, right = 0;
+    int valid = 0;
+    while (right < s.size()) {
+        // c 是将移入窗口的字符
+        char c = s[right];
+        // 增大窗口
+        right++;
+        // 进行窗口内数据的一系列更新
+        ...
+
+        /*** debug 输出的位置 ***/
+        printf("window: [%d, %d)\n", left, right);
+        /********************/
+
+        // 判断左侧窗口是否要收缩
+        while (window needs shrink) {
+            // d 是将移出窗口的字符
+            char d = s[left];
+            // 缩小窗口
+            left++;
+            // 进行窗口内数据的一系列更新
+            ...
+        }
+    }
+}
+#+end_src
+
+*** 套路实战
+
+**** 76. 最小覆盖子串
+[[id:ac871159-1201-44f7-a23f-05c23c32fbd8][76. 最小覆盖子串]]
+**** 567. 字符串的排列
+一个根据套路完成的。。成了默写了哈哈
+[[id:2536cac7-288d-4bcd-99e9-d93c810e4a47][567. 字符串的排列]]
+**** TODO [#A] 找到字符串的所有字母异位词
+这个有问题，需要后面再看下
+[[id:f98eb782-74ef-4bf0-8cb9-021cf631311b][438. 找到字符串中所有字母异位词]]
+**** 最长无重复子串
+[[id:2b4c90c1-37c6-4149-b792-4a08d88155be][3. 无重复字符的最长子串]]
+
+** 二分查找算法
+*** 二分查找框架
+#+begin_src java
+int binarySearch(int[] nums, int target) {
+    int left = 0, right = ...;
+
+    while(...) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] == target) {
+            ...
+        } else if (nums[mid] < target) {
+            left = ...
+        } else if (nums[mid] > target) {
+            right = ...
+        }
+    }
+    return ...;
+}
+#+end_src
+
+*** 二分查找实战
+**** 704. 二分查找
+[[id:23539251-cab8-4dae-aded-0763a5dee39c][704. 二分查找]]
+**** 寻找左侧边界的十分查找
+***** 什么是左侧边界？
