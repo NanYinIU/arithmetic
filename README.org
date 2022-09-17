@@ -49,7 +49,9 @@ class PrefixSum {
 
 **** 一维数组中的前缀和
 
-[[id:f2d7b7b9-1372-477e-ae8c-8ba633da8b73][303. Range Sum Query - Immutable Org Doc]] -> [[./src/main/java/com/leetcode/v2/No303_Range_Sum_Query_Immutable/NumArray.java][Solution]]
+[[id:f2d7b7b9-1372-477e-ae8c-8ba633da8b73][303. Range Sum Query - Immutable Org Doc]]
+
+[[./src/main/java/com/leetcode/v2/No303_Range_Sum_Query_Immutable/NumArray.java][Solution]]
 
 这个技巧在生活中运用也挺广泛的，比方说，你们班上有若干同学，每个同学有⼀个期末考试的成绩（满 100 分），那么请你实现⼀个 API，输⼊任意⼀个分数段，返回有多少同学的成绩在这个分数段内。
 
@@ -264,3 +266,50 @@ int binarySearch(int[] nums, int target) {
 [[id:23539251-cab8-4dae-aded-0763a5dee39c][704. 二分查找]]
 **** 寻找左侧边界的十分查找
 ***** 什么是左侧边界？
+
+** 二叉树
+
+ * 二叉树的思维方式：
+   a. 从上自下的进行遍历
+   b. 从下自上的递归
+ * TODO 哪些问题可以用二叉树的思维解决？
+*** 理解前中后序
+二叉树的遍历框架：
+#+begin_src java
+void traverse(TreeNode root) {
+    if (root == null) {
+        return;
+    }
+    // 前序位置
+    traverse(root.left);
+    // 中序位置
+    traverse(root.right);
+    // 后序位置
+}
+#+end_src
+
+A 在递归调用链表的时候，如何去用递归的方式完成？
+#+begin_src java
+/* 递归遍历单链表 */
+void traverse(ListNode head) {
+    if (head == null) {
+        return;
+    }
+    // 前序位置
+    traverse(head.next);
+    // 后序位置
+}
+#+end_src
+
+可以看到，实际上对树的遍历就是对链表遍历的扩展，所谓的前序和后序只不过是在递归调用的不同的位置，后序主要就是利用了调用的堆栈，实现了倒序弹出
+
+要记住这个图：
+
+#+DOWNLOADED: https://labuladong.github.io/algo/images/%e4%ba%8c%e5%8f%89%e6%a0%91%e6%94%b6%e5%ae%98/2.jpeg @ 2022-09-17 17:23:06
+#+attr_org: :width 300px
+[[file:img/跟着_labuladong_学习算法/2022-09-17_17-23-06_2.jpeg]]
+
+
+前中后序是遍历二叉树过程中处理每一个节点的三个特殊 *时间点* ；二叉树的所有问题，就是让你在前中后序位置注入巧妙的代码逻辑，去达到自己的目的，你只需要单独思考 *每一个节点应该做什么* ，其他的不用你管，抛给二叉树遍历框架，递归会在所有节点上做相同的操作。
+
+[[./src/main/java/com/leetcode/v2/No104_maximum_depth_of_binary_tree/Solution.java][No104 树的最大深度]]
