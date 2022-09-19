@@ -309,7 +309,23 @@ void traverse(ListNode head) {
 #+attr_org: :width 300px
 [[file:img/跟着_labuladong_学习算法/2022-09-17_17-23-06_2.jpeg]]
 
-
 前中后序是遍历二叉树过程中处理每一个节点的三个特殊 *时间点* ；二叉树的所有问题，就是让你在前中后序位置注入巧妙的代码逻辑，去达到自己的目的，你只需要单独思考 *每一个节点应该做什么* ，其他的不用你管，抛给二叉树遍历框架，递归会在所有节点上做相同的操作。
 
+#+begin_comment
+
+综上，遇到一道二叉树的题目时的通用思考过程是：
+
+1、是否可以通过遍历一遍二叉树得到答案？如果可以，用一个 traverse 函数配合外部变量来实现。
+
+2、是否可以定义一个递归函数，通过子问题（子树）的答案推导出原问题的答案？如果可以，写出这个递归函数的定义，并充分利用这个函数的返回值。
+
+3、无论使用哪一种思维模式，你都要明白二叉树的每一个节点需要做什么，需要在什么时候（前中后序）做。
+#+end_comment
+
 [[./src/main/java/com/leetcode/v2/No104_maximum_depth_of_binary_tree/Solution.java][No104 树的最大深度]]
+
+前序遍历，看当前值是否 <min 或者 >max, 确定是否要裁剪还是继续向下遍历
+[[./src/main/java/com/leetcode/v2/No669_trim_a_binary_search_tree/Solution.java][No669 树的裁剪]]
+
+后序遍历计算最大值，为啥是后序遍历？
+[[./src/main/java/com/leetcode/v2/No543_diameter_of_binary_tree/Solution.java][No543 二叉树的直经]]

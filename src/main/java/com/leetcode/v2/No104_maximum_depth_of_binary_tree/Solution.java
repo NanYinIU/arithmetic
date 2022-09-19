@@ -34,19 +34,18 @@ class Solution {
     int deep = 0;
 
     public int maxDepth(TreeNode root) {
-        traverse(root);
-        return result;
+        return traverse(root);
     }
 
-    public void traverse(TreeNode node) {
+    public int traverse(TreeNode node) {
         if (node == null) {
-            return;
+            return 0;
         }
-        deep++;
-        traverse(node.left);
-        traverse(node.right);
-        result = Math.max(deep, result);
-        deep--;
+        // 还可以在前序的时候让临时变量+1,取最大值后，后序的时候让临时变量-1
+        int leftDep = traverse(node.left);
+        int rightDep = traverse(node.right);
+        // 直接用后序遍历解决
+        return 1 + Math.max(leftDep, rightDep);
     }
 
 }
