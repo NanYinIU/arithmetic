@@ -49,15 +49,13 @@ class PrefixSum {
 
 **** 一维数组中的前缀和
 
-[[id:f2d7b7b9-1372-477e-ae8c-8ba633da8b73][303. Range Sum Query - Immutable Org Doc]]
-
-[[./src/main/java/com/leetcode/v2/No303_Range_Sum_Query_Immutable/NumArray.java][Solution]]
+[[./src/main/java/com/leetcode/v2/No303_Range_Sum_Query_Immutable/NumArray.java][303. Range Sum Query - Immutable Org Doc]]
 
 这个技巧在生活中运用也挺广泛的，比方说，你们班上有若干同学，每个同学有⼀个期末考试的成绩（满 100 分），那么请你实现⼀个 API，输⼊任意⼀个分数段，返回有多少同学的成绩在这个分数段内。
 
 **** 二维数组中的前缀和
 
-[[id:3f74d40e-86e9-4112-950c-0554301119bf][304. Range Sum Query 2D - Immutable]]
+[[./src/main/java/com/leetcode/v2/No304_Range_Sum_Query_2D_Immutable/NumMatrix.java][304. Range Sum Query 2D - Immutable]]
 
 *** 差分数组
 - 差分数组和前缀和比较类似，不一样的是，差分数组适合频繁对原始数组的某个区间的元素进行增减。
@@ -106,24 +104,24 @@ class Difference{
 
 #+end_src
 
-[[id:62d79f1d-66bd-4c3a-a9d4-0223e26efd11][1109. Corporate Flight Bookings]]
+[[./src/main/java/com/leetcode/v2/No1109_Corporate_Flight_Bookings/Solution.java][1109. Corporate Flight Bookings]]
 
 还有一个很类似的题目：
 
-[[id:fba03ce1-c4b8-4f7b-b67b-8758d53ad8b7][1094. Car Pooling]]
+[[./src/main/java/com/leetcode/v2/No1094_Car_Pooling/Solution.java][1094. Car Pooling]]
 
 *** 双指针
 **** 1. 删除数组中的重复项
-[[id:29d23cb2-69ea-4f63-a721-7c15fb0b827c][26. Remove Duplicates from Sorted Array]]
+[[src/main/java/com/leetcode/v2/No026_remove_duplicate_from_sorted_array/Solution.java][26. Remove Duplicates from Sorted Array]]
 **** 2. 移除元素
-[[id:4d9cf4a9-2e57-48e8-9667-c142274de4f5][27. Remove Element]]
+[[./src/main/java/com/leetcode/v2/No027_remove_element/Solution.java][27. Remove Element]]
 **** 3. 两数之和
-[[id:7e901b73-449f-4f89-b877-2badd0da816c][167. Two Sum II - Input Array Is Sorted]]
+[[./src/main/java/com/leetcode/v2/No167_two_sum_II/Solution.java][167. Two Sum II - Input Array Is Sorted]]
 **** 4. 反转数组
-[[id:aa7f8b11-6bd8-4608-8537-9f9bf9e00c0b][344. Reverse String]]
+[[./src/main/java/com/leetcode/v2/No344_reverse_string/Solution.java][344. Reverse String]]
 **** 5. 最长回访子串
 使用双指针由内向外移动，相当于暴力解决，可以使用动态规化的方式，这个需要等到动态规化的时候再说
-[[id:0060dc9b-949e-4d76-989d-a4b4416a733c][5. 最长回文子串]]
+TODO: [[id:0060dc9b-949e-4d76-989d-a4b4416a733c][5. 最长回文子串]]
 
 ** 链表
 
@@ -137,20 +135,20 @@ class Difference{
 2. 其次，使用到了 p 节点，作为 dump 列表上的一个可移到的头节点，就像拉链的拉头；
 3. 最后，使用两个分别作为 p1,p2 两个节点的可移动的节点，就像拉链两边的锯齿；
 
-[[id:ad6ca029-3243-4e79-ad08-28ff688a574c][21. Merge Two Sorted Lists]]
+[[./src/main/java/com/leetcode/v2/No21_merge_two_sorted_list/Solution.java][21. Merge Two Sorted Lists]]
 
 **** 2. 合并 K 个有序链表
 
 1. 这里使用了优先级队列的数据结构，将每个链表的头结点都加到最小堆中，就可以每次获得 k 个节点中的最小结点；
 2. 还有一个方法就是使用二分和递归的方式，两两进行组合，就是跟上面的合并两个有序链表一个思路了，具体实现可以看下面的程序；
 
-[[id:ad6ca029-3243-4e79-ad08-28ff688a574c][23. Merge k Sorted Lists]]
+[[./src/main/java/com/leetcode/v2/No23_merge_k_sorted_list/Solution.java][23. Merge k Sorted Lists]]
 
 **** 3. 环形链表
 怎么判断是否是环形链表？快慢指针，如果相遇，则是环形链表
-[[id:33a27284-7e11-4dc9-8d9b-27667ebd00bc][141. Linked List Cycle]]
+[[./src/main/java/com/leetcode/v2/No141_linked_list_cycle/Solution.java][141. Linked List Cycle]]
 判断环的起点
-[[id:9b1c3210-50a4-4c47-8823-508bfba3eb27][142. Linked List Cycle II]]
+[[./src/main/java/com/leetcode/v2/No142_linked_list_cycle_II/Solution.java][142. Linked List Cycle II]]
 **** 4. 单链表的倒数第 K 个节点
 - 怎么获得倒数第 K 个节点？如果想获得第 K 个节点，可以 for 循环直接遍历；
 - 求倒数 K 个节点 -> 那就是求 N - K 位置的节点
@@ -172,10 +170,10 @@ ListNode findFromEnd(ListNode head, int k) {
 }
 #+end_src
 
-[[id:ad6ca029-3243-4e79-ad08-28ff688a574c][19. Remove Nth Node From End of List]]
+[[./src/main/java/com/leetcode/v2/No019_remove_nth_node_from_end_of_list/Solution.java][19. Remove Nth Node From End of List]]
 **** 5. 链表中的中间节点
 通过快慢指针来避免第一次获取长度 N，第二次循环到 N/2 的问题，可以一次循环解决问题
-[[id:529cffe3-d25e-4499-ac60-a57d3368bf98][876. Middle of the Linked List]]
+[[./src/main/java/com/leetcode/v2/No876_middle_of_the_linked_list/Solution.java][876. Middle of the Linked List]]
 **** 6. 相交链表
 因为两个链表的长度不一致，导致使用双指针的时候不知道两个指针什么时候出发合适；
 HeadA 路程是 a -> c -> b 总数是 A
@@ -187,7 +185,7 @@ Point1 - Point2 = a - x;
 Point1 + x = Point2 + a
 从而可以看到，两个再分别通过均速走就可以在交点相遇
 
-[[id:eb8dc97d-3f88-471e-b706-176801956830][160. Intersection of Two Linked Lists]]
+[[./src/main/java/com/leetcode/v2/No160_intersection_of_two_linked_list/Solution.java][160. Intersection of Two Linked Lists]]
 ****
 
 ** 滑动窗口算法
@@ -274,7 +272,8 @@ int binarySearch(int[] nums, int target) {
    b. 从下自上的递归
  * TODO 哪些问题可以用二叉树的思维解决？
 *** 理解前中后序
-二叉树的遍历框架：
+
+**** 二叉树的遍历框架：
 #+begin_src java
 void traverse(TreeNode root) {
     if (root == null) {
@@ -303,6 +302,7 @@ void traverse(ListNode head) {
 
 可以看到，实际上对树的遍历就是对链表遍历的扩展，所谓的前序和后序只不过是在递归调用的不同的位置，后序主要就是利用了调用的堆栈，实现了倒序弹出
 
+****  [#A] 理解处理树节点的序列实际上是处理节点的时间点
 要记住这个图：
 
 #+DOWNLOADED: https://labuladong.github.io/algo/images/%e4%ba%8c%e5%8f%89%e6%a0%91%e6%94%b6%e5%ae%98/2.jpeg @ 2022-09-17 17:23:06
@@ -311,7 +311,7 @@ void traverse(ListNode head) {
 
 前中后序是遍历二叉树过程中处理每一个节点的三个特殊 *时间点* ；二叉树的所有问题，就是让你在前中后序位置注入巧妙的代码逻辑，去达到自己的目的，你只需要单独思考 *每一个节点应该做什么* ，其他的不用你管，抛给二叉树遍历框架，递归会在所有节点上做相同的操作。
 
-#+begin_comment
+#+begin_quote
 
 综上，遇到一道二叉树的题目时的通用思考过程是：
 
@@ -320,12 +320,16 @@ void traverse(ListNode head) {
 2、是否可以定义一个递归函数，通过子问题（子树）的答案推导出原问题的答案？如果可以，写出这个递归函数的定义，并充分利用这个函数的返回值。
 
 3、无论使用哪一种思维模式，你都要明白二叉树的每一个节点需要做什么，需要在什么时候（前中后序）做。
-#+end_comment
+#+end_quote
 
-[[./src/main/java/com/leetcode/v2/No104_maximum_depth_of_binary_tree/Solution.java][No104 树的最大深度]]
+*** 后序遍历
+- 可以利用后序遍历将层数+1，取 Max 值如这个题：[[./src/main/java/com/leetcode/v2/No104_maximum_depth_of_binary_tree/Solution.java][No104 树的最大深度]]
+- 后序遍历计算最大值，为啥是后序遍历？-> [[./src/main/java/com/leetcode/v2/No543_diameter_of_binary_tree/Solution.java][No543 二叉树的直经]]
 
-前序遍历，看当前值是否 <min 或者 >max, 确定是否要裁剪还是继续向下遍历
-[[./src/main/java/com/leetcode/v2/No669_trim_a_binary_search_tree/Solution.java][No669 树的裁剪]]
+*** [#A] 前序遍历
+- 看当前值是否 <min 或者 >max, 确定是否要裁剪还是继续向下遍历 -> [[./src/main/java/com/leetcode/v2/No669_trim_a_binary_search_tree/Solution.java][No669 树的裁剪]] 如何做裁剪？裁剪无非就是把当前节点这只为 null 说明这个接口以及后面的节点都被裁减掉了
 
-后序遍历计算最大值，为啥是后序遍历？
-[[./src/main/java/com/leetcode/v2/No543_diameter_of_binary_tree/Solution.java][No543 二叉树的直经]]
+*** 层序遍历
+当遇到将树按照层的维度连接或查询，实际就是树的广度优先算法，比如这道题 : [[./src/main/java/com/leetcode/v2/No116_populating_next_right_pointers_in_each_node/Solution.java][116. 填充每个节点的下一个右侧节点指针]] 这道题实际上有两种解决方式
+- 一种是上面的解决方式，利用栈的特性，将每层数据先放到栈中，再依次弹出栈元素，关键在于如何处置层与层之间的关系，这里使用的是固定推到栈中的一层数据的 size，下次只弹出 size 个元素，这些元素就是在一层内的所有元素；
+- 另一种是二叉树的相邻节点抽象成一个「三叉树节点」，这样二叉树就变成了一棵「三叉树」，然后你去遍历这棵三叉树，把每个「三叉树节点」中的两个节点连接就行了： [[./src/main/java/com/leetcode/v2/No116_populating_next_right_pointers_in_each_node/Solution2.java][116. 填充每个节点的下一个右侧节点指针]]
