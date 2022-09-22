@@ -25,6 +25,8 @@ class Solution2 {
         return root;
     }
 
+    // 我们只要实现一个 traverse 函数来遍历这棵三叉树，
+    // 每个「三叉树节点」需要做的事就是把自己内部的两个二叉树节点穿起来
     public void connect(Node left, Node right) {
         if (left != null) {
             left.next = right;
