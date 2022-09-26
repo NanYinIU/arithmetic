@@ -29,8 +29,9 @@ class Solution {
         root.right = left;
         // 左节点设为空
         root.left = null;
+
         TreeNode p = root;
-        // 找到对下面右节点，最后把之前的右节点拼到这个循环出来的右节点上
+        // 找到对下面右节点，最后把之前的右节点拼到之前的最左节点上
         while (p.right != null) {
             p = p.right;
         }

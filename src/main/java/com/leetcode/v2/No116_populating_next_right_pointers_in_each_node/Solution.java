@@ -32,6 +32,7 @@ class Solution {
 
     public void traverse() {
         while (!stack.isEmpty()) {
+            // stack 的长度就是这一层的宽度，把这一层中的所有节点用next指针相连即可
             int size = stack.size();
             for (int i = 0; i < size; i++) {
                 Node node = stack.poll();
@@ -46,6 +47,7 @@ class Solution {
                 }
                 Node left = node.left;
                 Node right = node.right;
+                // 递归处理下一层
                 if (left != null) {
                     stack.offer(left);
                 }

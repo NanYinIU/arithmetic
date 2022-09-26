@@ -325,16 +325,20 @@ void traverse(ListNode head) {
 *** 后序遍历
 - 可以利用后序遍历将层数+1，取 Max 值如这个题：[[./src/main/java/com/leetcode/v2/No104_maximum_depth_of_binary_tree/Solution.java][No104 树的最大深度]]
 - 后序遍历计算最大值，为啥是后序遍历？-> [[./src/main/java/com/leetcode/v2/No543_diameter_of_binary_tree/Solution.java][No543 二叉树的直经]]
+- 将二叉树展开为链表 [[./src/main/java/com/leetcode/v2/No114_flatten_binary_tree_to_linked_list/Solution.java][114. 二叉树展开为链表]][fn:3] 大致思路可以整理为节点的左侧节点，拼接到 root 的右节点上，原本的右节点拼接到原左节点的下面；从子节点向根节点分析，那需要是后序遍历，先遍历到子节点，然后拆分子节点，从而构造根节点。
 
 *** [#A] 前序遍历
 - 看当前值是否 <min 或者 >max, 确定是否要裁剪还是继续向下遍历 -> [[./src/main/java/com/leetcode/v2/No669_trim_a_binary_search_tree/Solution.java][No669 树的裁剪]] 如何做裁剪？裁剪无非就是把当前节点这只为 null 说明这个接口以及后面的节点都被裁减掉了
 - 实战 1：simple [[./src/main/java/com/leetcode/v2/No226_invert_binary_tree/Solution.java][226. 翻转二叉树]] [fn:1]
 
 *** 层序遍历
-当遇到将树按照层的维度连接或查询，实际就是树的广度优先算法，比如这道题 : [[./src/main/java/com/leetcode/v2/No116_populating_next_right_pointers_in_each_node/Solution.java][116. 填充每个节点的下一个右侧节点指针]] 这道题实际上有两种解决方式
+当遇到将树按照层的维度连接或查询，实际就是树的广度优先算法，比如这道题 : [[./src/main/java/com/leetcode/v2/No116_populating_next_right_pointers_in_each_node/Solution.java][116. 填充每个节点的下一个右侧节点指针]][fn:2] 这道题实际上有两种解决方式
 - 一种是上面的解决方式，利用栈的特性，将每层数据先放到栈中，再依次弹出栈元素，关键在于如何处置层与层之间的关系，这里使用的是固定推到栈中的一层数据的 size，下次只弹出 size 个元素，这些元素就是在一层内的所有元素；
 - 另一种是二叉树的相邻节点抽象成一个「三叉树节点」，这样二叉树就变成了一棵「三叉树」，然后你去遍历这棵三叉树，把每个「三叉树节点」中的两个节点连接就行了： [[./src/main/java/com/leetcode/v2/No116_populating_next_right_pointers_in_each_node/Solution2.java][116. 填充每个节点的下一个右侧节点指针]]
 
 * Footnotes
+
+[fn:3] https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/
+[fn:2] https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/
 
 [fn:1] https://leetcode.cn/problems/invert-binary-tree/
