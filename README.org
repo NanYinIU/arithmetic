@@ -326,6 +326,7 @@ void traverse(ListNode head) {
 - 可以利用后序遍历将层数+1，取 Max 值如这个题：[[./src/main/java/com/leetcode/v2/No104_maximum_depth_of_binary_tree/Solution.java][No104 树的最大深度]]
 - 后序遍历计算最大值，为啥是后序遍历？-> [[./src/main/java/com/leetcode/v2/No543_diameter_of_binary_tree/Solution.java][No543 二叉树的直经]]
 - 将二叉树展开为链表 [[./src/main/java/com/leetcode/v2/No114_flatten_binary_tree_to_linked_list/Solution.java][114. 二叉树展开为链表]][fn:3] 大致思路可以整理为节点的左侧节点，拼接到 root 的右节点上，原本的右节点拼接到原左节点的下面；从子节点向根节点分析，那需要是后序遍历，先遍历到子节点，然后拆分子节点，从而构造根节点。
+- 一旦你发现题目和子树有关，那大概率要给函数设置合理的定义和返回值，在后序位置写代码了 ->[[src/main/java/com/leetcode/v2/No652_find_duplicate_subtrees/Solution.java][652. 寻找重复的子树]] [fn:4] 这里的大致思路就是需要从下至上看子树是否和其他子树一致，如果一致，则向上遍历再比较
 
 *** [#A] 前序遍历
 - 看当前值是否 <min 或者 >max, 确定是否要裁剪还是继续向下遍历 -> [[./src/main/java/com/leetcode/v2/No669_trim_a_binary_search_tree/Solution.java][No669 树的裁剪]] 如何做裁剪？裁剪无非就是把当前节点这只为 null 说明这个接口以及后面的节点都被裁减掉了
@@ -337,8 +338,8 @@ void traverse(ListNode head) {
 - 另一种是二叉树的相邻节点抽象成一个「三叉树节点」，这样二叉树就变成了一棵「三叉树」，然后你去遍历这棵三叉树，把每个「三叉树节点」中的两个节点连接就行了： [[./src/main/java/com/leetcode/v2/No116_populating_next_right_pointers_in_each_node/Solution2.java][116. 填充每个节点的下一个右侧节点指针]]
 
 * Footnotes
+[fn:4] https://leetcode.cn/problems/find-duplicate-subtrees/
 
 [fn:3] https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/
 [fn:2] https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/
-
 [fn:1] https://leetcode.cn/problems/invert-binary-tree/
